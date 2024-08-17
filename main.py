@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 
 
-def main(db_server, db_name):
+def backup_database(db_server, db_name):
     backup_folder = 'C:/DbBackup'
     backup_file = db_name + '_' + str(datetime.now().strftime('%Y%m%d_%H%M%S'))
     backup_path = os.path.join(backup_folder, backup_file) + '.bak'
@@ -32,5 +32,9 @@ def main(db_server, db_name):
     backup_df.to_csv(os.path.join(backup_folder, backup_details_file), index=False)
 
 
+def main() -> None:
+    backup_database()  # pass in db_server & db_name values
+
+
 if __name__ == '__main__':
-    main()  # pass in db_server & db_name values
+    main()
